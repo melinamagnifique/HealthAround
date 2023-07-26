@@ -1,0 +1,6 @@
+<div class="u-form-agree u-form-group u-form-group-4">
+    <label class="u-label"></label>
+    <input type="checkbox" id="agree-5f06" name="agree" class="u-agree-checkbox u-field-input" required="">
+    <label for="agree-5f06" class="u-agree-label u-field-label">&nbsp;J'accepte les CGU &amp; mentions légales<br>
+    </label>
+</div>

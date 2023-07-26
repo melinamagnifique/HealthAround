@@ -1,0 +1,39 @@
+use PHPMailer\PHPMailer\PHPMailer;
+
+require 'PHPMailer-master\src\Exception.php';
+require 'PHPMailer-master\src\PHPMailer.php';
+require 'PHPMailer-master\src\SMTP.php';
+        
+        
+        // Envoi de l'e-mail de confirmation au service client
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'serviceclient.healtharound@gmail.com';
+        $mail->Password = 'APPgrognasse123!';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        $mail->setFrom('serviceclient.healtharound@gmail.com', 'HealthAround');
+        $mail->addAddress('serviceclient.healtharound@gmail.com');
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Confirmation d\'inscription';
+        $mail->Body = "
+            <h1>Nouvelle demande d'inscription</h1>
+            <p>Un nouvel utilisateur souhaite s'inscrire sur HealthAround.</p>
+            <p>Voici les informations de l'utilisateur :</p>
+            <ul>
+                <li>Nom : $nom</li>
+                <li>Prénom : $prenom</li>
+                <li>Email : $email</li>
+            </ul>
+            <p>Veuillez confirmer ou annuler la demande en accédant à l'interface d'administration.</p>";
+
+        if ($mail->send()) {
+            echo "Le compte a été créé avec succès ! Votre demande d'inscription a été envoyée au service client pour confirmation.";
+        } else {
+            echo 'Impossible d\'envoyer l\'e-mail de confirmation au service client. Erreur : ' . $mail->ErrorInfo;
+        }
+    } 
